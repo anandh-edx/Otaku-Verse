@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+html, body, #root { height: 100%; }
+body {
+  @apply bg-ink-900 text-slate-200 font-sans antialiased;
+  background-image: radial-gradient(900px 500px at 85% -10%, rgba(139,92,246,.18), transparent 60%),
+    radial-gradient(700px 400px at -10% 10%, rgba(34,211,238,.10), transparent 60%);
+  background-attachment: fixed;
+}
+*:focus-visible { @apply outline-none ring-2 ring-cyan-400 ring-offset-2 ring-offset-ink-900; }
+
+@layer components {
+  .card { @apply rounded-2xl border border-white/10 bg-ink-800/70 backdrop-blur-sm; }
+  .glass { @apply rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition disabled:opacity-50 disabled:cursor-not-allowed; }
+  .btn-primary { @apply btn bg-gradient-to-r from-violet-600 to-violet-500 text-white shadow-glow hover:brightness-110; }
+  .btn-ghost { @apply btn border border-white/10 bg-white/5 text-slate-200 hover:bg-white/10; }
+  .btn-danger { @apply btn border border-red-500/30 bg-red-500/10 text-red-300 hover:bg-red-500/20; }
+  .input { @apply w-full rounded-xl border border-white/10 bg-ink-950/60 px-3 py-2.5 text-sm text-slate-100 placeholder:text-slate-500; }
+  .label { @apply mb-1 block text-xs font-medium text-slate-400; }
+  .chip { @apply inline-flex items-center rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-xs text-slate-300; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+.skeleton { @apply animate-pulse rounded-xl bg-white/5; }
